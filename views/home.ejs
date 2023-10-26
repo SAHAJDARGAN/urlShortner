@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>URL Shortener</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #c3b1e1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+        width: 100%;
+        max-width: 500px;
+        /* -webkit-box-shadow: 10px 10px 5px 0px rgba(255, 255, 255, 0.57);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(255, 255, 255, 0.57); */
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
+      }
+
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #ffffff;
+        font-size: 1.1rem;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .result {
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      .result p {
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Shortener</h1>
+      <form method="post" id="url-form" action="/url">
+        <div class="input-group">
+          <label for="url-input">Enter a URL:</label>
+          <input
+            type="url"
+            id="url-input"
+            name="url"
+            placeholder="https://example.com"
+            required
+          />
+        </div>
+        <button type="submit" id="shorten-btn">Shorten URL</button>
+      </form>
+      <div id="result" class="result">
+        <p id="shortened-url">
+          <% if (locals.id) { %> http://localhost:8000/url/<%= id %> <% }
+          %>
+        </p>
+      </div>
+      <table>
+        <% if (locals.urls && locals.urls.length!=0) { %>
+            <tr>
+                <th>S No.</th>
+                <th>Shortened URL</th>
+                <th>Redirected URL</th>
+                <th>Click counts</th>
+            </tr>
+            <% urls.forEach((url,idx) => { %>
+             <tr>
+                <td><%= idx+1 %></td>
+                <td><%= url.shortId %></td>
+                <td><%= url.redirectedURL %></td>
+                <td><%= url.visitHistory.length %></td>
+             </tr>
+            <% }) %>
+
+        <% } %>
+      </table>
+    </div>
+  </body>
+</html>

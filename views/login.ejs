@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Login page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #c3b1e1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
+      }
+
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #ffffff;
+        font-size: 1.1rem;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="login-form" action="/user/login" method="post">
+        <div class="input-group">
+          <label for="email-input">Email:</label>
+          <input
+            type="email"
+            id="email-input"
+            name="email"
+            placeholder="john.doe@example.com"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password-input">Password:</label>
+          <input
+            type="password"
+            id="password-input"
+            name="password"
+            placeholder="********"
+            required
+          />
+        </div>
+        <button type="submit" id="signup-btn">Login</button>
+      </form>
+    </div>
+  </body>
+</html>
